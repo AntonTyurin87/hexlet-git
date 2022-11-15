@@ -9,7 +9,19 @@ def toggle(READ_ONLY, flags):
 
 
 def toggled(READ_ONLY, flags):
-    return flags.add(READ_ONLY)
+    flags_2 = flags.copy()
+    if READ_ONLY in flags:
+        flags_2.discard(READ_ONLY)
+    else:
+       flags_2.add(READ_ONLY)
+
+    return flags_2
+
+new_flags = toggled(READ_ONLY, flags)
+
+print(READ_ONLY in flags)
+
+print(READ_ONLY in new_flags)
 
 
 '''

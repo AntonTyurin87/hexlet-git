@@ -6,10 +6,10 @@ def greet(name, *args):
     for n in (name,) + args:
         phrase += {n} 
 
-    print('Hello, ' + ' and '.join(phrase) + '!')
+    return ('Hello, ' + ' and '.join(phrase) + '!')
 
 
-greet()
+greet(name)
 
 '''
 Вам нужно реализовать функцию greet(), которая должна принимать несколько имён (как минимум одно!) и возвращать строку приветствия (см. примеры ниже).

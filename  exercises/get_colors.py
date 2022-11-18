@@ -1,21 +1,26 @@
 def rgb(red=0, green=0, blue=0):
     return f'rgb({red}, {green}, {blue})'
 
-color = 'red'
+a = 'green'
 
-def get_colors(color):
-    if color == 'red':
-        return rgb(255, 0, 0)
-    elif color == 'green':
-        return rgb(0, 255, 0)
-    elif color == 'blue':
-        return rgb(0, 0, 255)
+def get_colors():
 
-#print(get_colors(colors))
+    return {'red': rgb(red=255), 'green': rgb(green=255), 'blue': rgb(blue=255)}
 
+    #return (d.get('red'), d.get('green'), d.get('blue'))
+
+#print(rgb(a=255))
+
+
+#print(get_colors(a))
 
 colors = get_colors()
+print(colors['red'])
+
+
 set(colors.keys()) == {'red', 'green', 'blue'}
+
+print(set(colors.keys()) == {'red', 'green', 'blue'})
 
 '''
 В этом упражнении вам нужно будет, используя функцию rgb(), реализовать функцию get_colors(), 

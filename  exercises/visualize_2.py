@@ -3,7 +3,7 @@
 
 coins = (10,10,1,1,1,1,20,20,20,20,20,2,2,2,2,2,2,3,3,5,5)
 
-def visualize(kopilka, bar_char='₽'):
+def visualize(coins, bar_char='₽'):
 
     unic_coin = sorted(set(coins))
 
@@ -28,8 +28,8 @@ def visualize(kopilka, bar_char='₽'):
 
     string = []
 
-    stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n'])
-    stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n'])
+    stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n']) # stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n'])
+    stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n']) # stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n'])
     stroka_2 = list(unic_coin)
 
     stroka_22 = []
@@ -38,10 +38,13 @@ def visualize(kopilka, bar_char='₽'):
             stroka_22 = stroka_22 + [str(z) + '  ']
         else:
             stroka_22 = stroka_22 + [str(z) + ' ']
+    stroka_22[-1] = stroka_22[-1][0:2]
+
+    #print(stroka_22[-1])
 
     string_osn = []
     for r in range(len(unic_coin)):
-        string_osn.append(['   ']*len(unic_coin) + ['\n'])
+        string_osn.append(['   ']*(len(unic_coin)-1) + ['  '] + ['\n']) # string_osn.append(['   ']*(len(unic_coin)-1) + ['  '] + ['\n'])
 
     h = 0
     maximum = []

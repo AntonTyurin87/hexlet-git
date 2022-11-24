@@ -4,8 +4,7 @@ def greet(name, surname):
 name = 'ww'
 
 def partial_apply(name):
-    name = 'ww'
-    surname = 'rrr'
+
     def greet(name, surname):
         return f'Hello, {name} {surname}!'
     return greet

@@ -1,21 +1,31 @@
 def greet(name, surname):
     return f'Hello, {name} {surname}!'
 
-name = 'ww'
+#A = ['qqq', 'eee']
+#name = 'wwww'
+#surname = 'rrr'
 
-def partial_apply(name):
-
-    def greet(name, surname):
-        return f'Hello, {name} {surname}!'
-    return greet
+def partial_apply(greet, name):
+    def inner(surname):
+        return greet(name, surname)
+    return inner
 
 def flip(greet):
-    pass
+    def inner (name, surname):
+            return greet(surname, name)
+    return inner
 
-
-f = partial_apply('Dorian')
-print(f)
+#print(partial_apply(greet, 'Dorian'))
+f = partial_apply(greet, 'Dorian')
+#print(f)
 print(f('Grey'))
+
+
+#####################
+
+f = flip(greet)
+print(f('Christian', 'Teodor'))
+
 
 '''
 В этом упражнении вам нужно будет реализовать две функции высшего порядка, 

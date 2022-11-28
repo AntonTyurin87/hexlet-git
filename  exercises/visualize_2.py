@@ -28,19 +28,19 @@ def visualize(coins, bar_char='₽'):
 
     string = []
 
-    stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n']) # stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n'])
+    stroka_0 = ([bar_char*2 + '']*len(unic_coin) + ['\n']) # stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n'])
     stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n']) # stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n'])
     stroka_2 = list(unic_coin)
 
     stroka_22 = []
     for z in stroka_2:
-        if len(str(z)) == 1:
+        if len(str(z)) == 1: 
             stroka_22 = stroka_22 + [str(z) + '  ']
         else:
             stroka_22 = stroka_22 + [str(z) + ' ']
     stroka_22[-1] = stroka_22[-1][0:2]
 
-    #print(stroka_22[-1])
+    print(stroka_22[-1])
 
     string_osn = []
     for r in range(len(unic_coin)):
@@ -71,9 +71,11 @@ def visualize(coins, bar_char='₽'):
 
     for u in string_osn:
         string += list(u)
+    
+    print(string)
 
 
-    Ss = ''.join(string) + ''.join(stroka_0) + ''.join(stroka_1) + ''.join(stroka_22)
+    Ss = ''.join(string) + ' '.join(stroka_0) + ''.join(stroka_1) + ''.join(stroka_22)
 
     return Ss
 

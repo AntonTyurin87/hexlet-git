@@ -28,7 +28,7 @@ def visualize(coins, bar_char='₽'):
 
     string = []
 
-    stroka_0 = ([bar_char*2 + '']*len(unic_coin) + ['\n']) # stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n'])
+    stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n']) # stroka_0 = ([bar_char*2 + ' ']*len(unic_coin) + ['\n'])
     stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n']) # stroka_1 = (['--']*len(unic_coin) + ['-']*(len(unic_coin)-1) + ['\n'])
     stroka_2 = list(unic_coin)
 
@@ -40,7 +40,7 @@ def visualize(coins, bar_char='₽'):
             stroka_22 = stroka_22 + [str(z) + ' ']
     stroka_22[-1] = stroka_22[-1][0:2]
 
-    print(stroka_22[-1])
+    #print(stroka_22[-1])
 
     string_osn = []
     for r in range(len(unic_coin)):
@@ -68,14 +68,21 @@ def visualize(coins, bar_char='₽'):
             counter.remove(counter_2[p])
 
         h +=1
+    
+
+    #print(string_osn)
 
     for u in string_osn:
+        u[5] = u[5][0]+u[5][1]
         string += list(u)
-    
-    print(string)
 
+    stroka_0[5] = bar_char*2
 
-    Ss = ''.join(string) + ' '.join(stroka_0) + ''.join(stroka_1) + ''.join(stroka_22)
+    Ss = ''.join(string) + ''.join(stroka_0) + ''.join(stroka_1) + ''.join(stroka_22)
+
+    #print(list(Ss))
+
+    #print(list(stroka_0))
 
     return Ss
 
@@ -83,19 +90,34 @@ def visualize(coins, bar_char='₽'):
 print(visualize(coins, bar_char='₽'))
 
 '''
-            if counter_2[i] == max(counter):
-                if len(str(counter_2[i])) == 1:
-                    string_osn[h][i+1] = str(k[i][1]) + '  '
-                elif len(str(counter_2[i])) == 2:
-                    string_osn[h][i+1] = str(k[i][1]) + ' '
 
-                counter.remove(counter_2[i])
-                for y in range(h+1, len(unic_coin)):
-                    string_osn[y][i+1] = bar_char*2 + ' '
-                    
-                if counter == []:
-                    break
+Решение в задание!
 
-                break
+    counts = Counter(coins)
+    nominals = sorted(counts.keys())
+    highest_stack = max(counts.values())
+
+    rows = []
+    delimiter = ''
+
+    for level in range(highest_stack, -1, -1):
+        row = ''
+        for _, bar in sorted(counts.items()):
+            if bar > level:
+                row += f'{bar_char * 2} '
+            elif bar == level and bar != 0:
+                row += f'{bar:<2d} '
+                delimiter += '---'
+            else:
+                row += '   '
+        rows.append(row[:-1])
+
+    rows.append(delimiter[:-1])
+    row = ''
+    for nominal in nominals:
+        row += f'{nominal:<2d} '
+    rows.append(row[:-1])
+
+    return '\n'.join(rows)
 
 '''
